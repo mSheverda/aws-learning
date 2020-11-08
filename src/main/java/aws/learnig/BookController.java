@@ -2,6 +2,7 @@ package aws.learnig;
 
 import java.util.List;
 import lombok.SneakyThrows;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,9 +41,11 @@ public class BookController {
     bookRepository.deleteById(id);
   }
 
+  @SneakyThrows
   @PutMapping("/{id}")
-  public Book updateBook(@RequestBody Book book) {
+  public Book updateBook(@PathVariable int id, @RequestBody Book book) {
+    Book oldBook = bookRepository.findById(id).orElseThrow(() -> new Exception("Book not available"));
+    BeanUtils.copyProperties(book, oldBook);
     return bookRepository.save(book);
   }
-
 }
