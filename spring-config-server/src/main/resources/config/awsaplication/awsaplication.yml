@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://msheverdaaws2.cwld5fuc2lut.eu-central-1.rds.amazonaws.com:3306/msheverdaaws2
+    username: root
+    password: '{cipher}65b78c669d3fcbef5e8f457467e40ba0bb8502bfabb9759f2fe3279e9870214e'
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+server:
+  port: 5000
