@@ -8,3 +8,5 @@ spring:
       server:
         native:
           searchLocations: classpath:/config/awsaplication
+        encrypt:
+          enabled: false
